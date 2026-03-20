@@ -59,6 +59,8 @@ export default function Home() {
         const configJson = await configRes.json()
         const skillsJson = await skillsRes.json()
 
+        document.title = `${apiJson.profile.firstName} ${apiJson.profile.lastName}`
+
         setData(apiJson)
         setConfig(configJson)
         setSkillsMeta(skillsJson)
