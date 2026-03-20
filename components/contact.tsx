@@ -11,10 +11,13 @@ interface ContactProps {
     href: string
     icon: LucideIcon
     color: string
-  }[]
+  }[],
+  footer: string
+  firstName: string
+  lastName: string
 }
 
-export default function Contact({ socials, contactsSubText }: ContactProps) {
+export default function Contact({ socials, contactsSubText, footer, firstName, lastName }: ContactProps) {
   const { ref, inView } = useInView({
     triggerOnce: true,
     threshold: 0.3,
@@ -97,10 +100,10 @@ export default function Contact({ socials, contactsSubText }: ContactProps) {
             className="mt-24 pt-12 border-t border-border text-center"
           >
             <p className="text-muted-foreground text-sm mb-4">
-              Built with React, Next.js, and Framer Motion
+              {footer}
             </p>
             <p className="text-xs text-muted-foreground/60">
-              © 2024 Your Name. All rights reserved.
+              © 2024 {firstName} {lastName}. All rights reserved.
             </p>
           </motion.div>
         </motion.div>

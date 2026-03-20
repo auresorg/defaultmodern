@@ -179,8 +179,8 @@ export default function Home() {
       <Navigation firstName={`${firstName} ${lastName}`} />
 
       <Hero
-        heroText={config?.heroText}
-        heroTextHighlight={config?.heroTextHighlight}
+        heroText={firstName}
+        heroTextHighlight={lastName}
         heroSubText={config?.heroSubText}
       />
 
@@ -203,6 +203,9 @@ export default function Home() {
       <Contact
         socials={socials}
         contactsSubText={config?.contactSubText}
+        footer={config?.footer}
+        firstName={firstName}
+        lastName={lastName}
       />
 
       <motion.div
