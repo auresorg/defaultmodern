@@ -49,15 +49,19 @@ export default function Home() {
   useEffect(() => {
     const load = async () => {
       try {
-        const [apiRes, configRes, skillsRes] = await Promise.all([
-          fetch('https://aures.dev/api/public/mvishok?select=profile,projects,experience,skills,email'),
+        const [configRes, skillsRes] = await Promise.all([
           fetch('/config.json'),
           fetch('/skills.json'),
         ])
 
-        const apiJson = await apiRes.json()
         const configJson = await configRes.json()
         const skillsJson = await skillsRes.json()
+
+        const apiRes = await fetch(
+          `https://aures.dev/api/public/${configJson.username}?select=profile,projects,experience,skills,email`
+        )
+
+        const apiJson = await apiRes.json()
 
         document.title = `${apiJson.profile.firstName} ${apiJson.profile.lastName}`
 
